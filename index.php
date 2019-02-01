@@ -7,8 +7,13 @@ ini_set('display_errors', 1);
 ini_set("log_errors", 1);
 ini_set('error_log', __DIR__ . DS . 'storage' . DS . 'logs' . DS . 'error.log');
 
+
 if (!empty($_REQUEST)) {
-    die('die');
+    $xxx = file_get_contents('777.txt');
+    echo "<pre>";
+    var_dump($xxx);
+    echo "</pre>";
+    exit();
 }
 
 require __DIR__ . DS . 'vendor' . DS . 'autoload.php';
