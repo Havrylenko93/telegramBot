@@ -14,6 +14,7 @@ if (!empty($_REQUEST)) {
 require __DIR__ . DS . 'vendor' . DS . 'autoload.php';
 
 echo "<pre>";
-var_dump(file_get_contents("php://input"));
+$data = file_get_contents("php://input");
+var_dump(file_put_contents('777.txt', $data, FILE_APPEND));
 echo "</pre>";
 exit();
