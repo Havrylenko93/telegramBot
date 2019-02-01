@@ -1,0 +1,7 @@
+{
+	"user": {
+		"id" : 1,
+		"name" : "Sergey",
+		"link" : "https://www.youtube.com/watch?v=CqIxJpVOzTE"
+	}
+}

@@ -7,19 +7,30 @@ ini_set('display_errors', 1);
 ini_set("log_errors", 1);
 ini_set('error_log', __DIR__ . DS . 'storage' . DS . 'logs' . DS . 'error.log');
 
+require __DIR__ . DS . 'vendor' . DS . 'autoload.php';
+
+$dotEnv = Dotenv\Dotenv::create(__DIR__);
+$dotEnv->load();
 
 if (!empty($_REQUEST)) {
-    $xxx = file_get_contents('777.txt');
+    die('9');
+}
+
+$input = json_decode(file_get_contents("php://input"));
+
+if (!isset($input->message)) {
+    die('no message');
+}
+$telegram = new Telegram\Bot\Api(getenv('telegramToken'));
+
+if ($input->message->text == '/start') {
     echo "<pre>";
-    var_dump($xxx);
+    var_dump($telegram);
     echo "</pre>";
     exit();
 }
 
-require __DIR__ . DS . 'vendor' . DS . 'autoload.php';
 
-echo "<pre>";
-$data = file_get_contents("php://input");
-var_dump(file_put_contents(__DIR__ . DS . '777.txt', $data, FILE_APPEND));
-echo "</pre>";
-exit();
+
+
+
