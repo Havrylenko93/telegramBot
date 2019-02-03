@@ -21,15 +21,16 @@ $input = json_decode(file_get_contents("php://input"));
 if (!isset($input->message)) {
     die('no message');
 }
-$telegram = new Telegram\Bot\Api(getenv('telegramToken'));
 
 $chatId = (int)$input->message->from->id;
+$baseUrl = 'https://api.telegram.org/bot'. getenv('telegramToken');
 
 if ($input->message->text == '/start') {
-    //$keyboard = [["Дай мемасиков"]];
     $reply = "Оставь здравый смысл всяк сюда входящий";
-    //$replyMarkup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
-    $telegram->sendMessage([ 'chat_id' => $chatId, 'text' => $reply]);
+    $keyboard = array(array("[Destaques]","[Campinas e RMC]","[esportes]"));
+    $resp = array("keyboard" => $keyboard,"resize_keyboard" => true,"one_time_keyboard" => true);
+    $url = $baseUrl."/sendmessage?chat_id=".$chatId."&text=oi&reply_markup=".$reply;
+    file_get_contents($url);
 }
 
 

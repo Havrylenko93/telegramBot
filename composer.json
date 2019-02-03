@@ -2,7 +2,6 @@
     "require": {
         "nesbot/carbon": "^2.11",
         "guzzlehttp/guzzle": "^6.3",
-        "irazasyed/telegram-bot-sdk": "^3.0",
         "vlucas/phpdotenv": "^3.3"
     }
 }
