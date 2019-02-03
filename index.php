@@ -26,10 +26,10 @@ $telegram = new Telegram\Bot\Api(getenv('telegramToken'));
 $chatId = (int)$input->message->from->id;
 
 if ($input->message->text == '/start') {
-    $keyboard = [["Дай мемасиков"]];
+    //$keyboard = [["Дай мемасиков"]];
     $reply = "Оставь здравый смысл всяк сюда входящий";
-    $replyMarkup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
-    $telegram->sendMessage([ 'chat_id' => $chatId, 'text' => $reply, 'reply_markup' => $replyMarkup ]);
+    //$replyMarkup = $telegram->replyKeyboardMarkup([ 'keyboard' => $keyboard, 'resize_keyboard' => true, 'one_time_keyboard' => false ]);
+    $telegram->sendMessage([ 'chat_id' => $chatId, 'text' => $reply]);
 }
 
 
