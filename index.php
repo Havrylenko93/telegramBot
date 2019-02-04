@@ -33,9 +33,9 @@ if (!isset($input->message)) {
 $chatId = (int)$input->message->from->id;
 $baseUrl = 'https://api.telegram.org/bot'. getenv('telegramToken');
 $httpClient = new \GuzzleHttp\Client();
+$method = '/sendmessage';
 
 if ($input->message->text == '/start') {
-    $method = '/sendmessage';
     $message = http_build_query([
         'chat_id' => $chatId,
         'text' => 'Оставь здравый смысл всяк сюда входящий',
@@ -46,13 +46,19 @@ if ($input->message->text == '/start') {
         ])
     ]);
 
-    $response = $httpClient->request('POST',
-        $baseUrl . $method . '?' . $message,
-        [
-
-        ])->getBody()->getContents();
-}else {
-    file_put_contents('777.txt', json_encode($input));
+    $response = $httpClient->request('POST', $baseUrl . $method . '?' . $message)->getBody()->getContents();
+}elseif($input->message->text == 'Да будет мемас') {
+    $message = http_build_query([
+        'chat_id' => $chatId,
+        'text' => 'Здесь могла быть ваша реклама',
+    ]);
+    $response = $httpClient->request('POST', $baseUrl . $method . '?' . $message)->getBody()->getContents();
+} else {
+    $message = http_build_query([
+        'chat_id' => $chatId,
+        'text' => 'Моя твоя не понимать',
+    ]);
+    $response = $httpClient->request('POST', $baseUrl . $method . '?' . $message)->getBody()->getContents();
 }
 
 
