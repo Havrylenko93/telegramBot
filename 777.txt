@@ -1,7 +1,1 @@
-{
-	"user": {
-		"id" : 1,
-		"name" : "Sergey",
-		"link" : "https://www.youtube.com/watch?v=CqIxJpVOzTE"
-	}
-}
+{"update_id":836342741,"message":{"message_id":7,"from":{"id":367493996,"is_bot":false,"first_name":"\u0421\u0435\u0440\u0433\u0435\u0439","last_name":"\u0413\u0430\u0432\u0440\u0438\u043b\u0435\u043d\u043a\u043e","language_code":"en"},"chat":{"id":367493996,"first_name":"\u0421\u0435\u0440\u0433\u0435\u0439","last_name":"\u0413\u0430\u0432\u0440\u0438\u043b\u0435\u043d\u043a\u043e","type":"private"},"date":1549031815,"text":"\/stsart"}}

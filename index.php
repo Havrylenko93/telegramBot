@@ -12,6 +12,14 @@ require __DIR__ . DS . 'vendor' . DS . 'autoload.php';
 $dotEnv = Dotenv\Dotenv::create(__DIR__);
 $dotEnv->load();
 
+
+//TODO: need delete
+if(isset($_REQUEST['x'])) {
+    echo "<pre>";
+    var_dump(file_get_contents('777.txt'));
+    echo "</pre>";
+    exit();
+}
 if (!empty($_REQUEST)) {
     die('9');
 }
@@ -24,13 +32,27 @@ if (!isset($input->message)) {
 
 $chatId = (int)$input->message->from->id;
 $baseUrl = 'https://api.telegram.org/bot'. getenv('telegramToken');
+$httpClient = new \GuzzleHttp\Client();
 
 if ($input->message->text == '/start') {
-    $reply = "Оставь здравый смысл всяк сюда входящий";
-    $keyboard = array(array("[Destaques]","[Campinas e RMC]","[esportes]"));
-    $resp = array("keyboard" => $keyboard,"resize_keyboard" => true,"one_time_keyboard" => true);
-    $url = $baseUrl."/sendmessage?chat_id=".$chatId."&text=oi&reply_markup=".$reply;
-    file_get_contents($url);
+    $method = '/sendmessage';
+    $message = http_build_query([
+        'chat_id' => $chatId,
+        'text' => 'Оставь здравый смысл всяк сюда входящий',
+        'reply_markup' => json_encode([
+            'keyboard' => [
+                ['Да будет мемас']
+            ]
+        ])
+    ]);
+
+    $response = $httpClient->request('POST',
+        $baseUrl . $method . '?' . $message,
+        [
+
+        ])->getBody()->getContents();
+}else {
+    file_put_contents('777.txt', json_encode($input), FILE_APPEND);
 }
 
 

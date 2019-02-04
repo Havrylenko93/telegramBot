@@ -2,6 +2,7 @@
     "require": {
         "nesbot/carbon": "^2.11",
         "guzzlehttp/guzzle": "^6.3",
-        "vlucas/phpdotenv": "^3.3"
+        "vlucas/phpdotenv": "^3.3",
+        "ext-json": "*"
     }
 }
