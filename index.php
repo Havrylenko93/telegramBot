@@ -52,7 +52,7 @@ if ($input->message->text == '/start') {
 
         ])->getBody()->getContents();
 }else {
-    file_put_contents('777.txt', json_encode($input), FILE_APPEND);
+    file_put_contents('777.txt', json_encode($input));
 }
 
 
