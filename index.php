@@ -12,14 +12,6 @@ require __DIR__ . DS . 'vendor' . DS . 'autoload.php';
 $dotEnv = Dotenv\Dotenv::create(__DIR__);
 $dotEnv->load();
 
-
-//TODO: need delete
-if(isset($_REQUEST['x'])) {
-    echo "<pre>";
-    var_dump(file_get_contents('777.txt'));
-    echo "</pre>";
-    exit();
-}
 if (!empty($_REQUEST)) {
     die('9');
 }
@@ -41,7 +33,7 @@ if ($input->message->text == '/start') {
         'text' => 'Оставь здравый смысл всяк сюда входящий',
         'reply_markup' => json_encode([
             'keyboard' => [
-                ['Да будет мемас']
+                ['Да будет мемас'] //make the button smaller
             ]
         ])
     ]);
@@ -54,6 +46,7 @@ if ($input->message->text == '/start') {
     ]);
     $response = $httpClient->request('POST', $baseUrl . $method . '?' . $message)->getBody()->getContents();
 } else {
+    // check message for insults
     $message = http_build_query([
         'chat_id' => $chatId,
         'text' => 'Моя твоя не понимать',
